@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pusat Edukasi TKJ - Jelajahi Dunia Jaringan Komputer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a class="logo" onclick="showLanding()">EduTKJ-by SELI</a>
+            <nav>
+                <!-- Navigasi bisa ditambahkan di sini jika perlu -->
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Landing Page View -->
+        <section id="landing-page">
+            <div class="container">
+                <h1 class="hero-title">Selamat Datang di Pusat Edukasi TKJ</h1>
+                <p class="hero-subtitle">Jelajahi materi Teknik Komputer dan Jaringan secara mendalam dan interaktif</p>
+                
+                <div class="network-animation-container">
+                    <svg class="network-animation" viewBox="0 0 800 300">
+                        <!-- Lines -->
+                        <path class="network-line" d="M 150 150 L 400 75" id="line1"/>
+                        <path class="network-line" d="M 150 150 L 400 225" id="line2"/>
+                        <path class="network-line" d="M 400 75 L 650 150" id="line3"/>
+                        <path class="network-line" d="M 400 225 L 650 150" id="line4"/>
+                        <path class="network-line" d="M 400 75 L 400 225" id="line5"/>
+                        
+                        <!-- Data Packets -->
+                        <circle r="5" class="data-packet">
+                            <animateMotion dur="3s" repeatCount="indefinite">
+                                <mpath href="#line1"/>
+                            </animateMotion>
+                        </circle>
+                        <circle r="5" class="data-packet">
+                             <animateMotion dur="3s" begin="1s" repeatCount="indefinite">
+                                <mpath href="#line2"/>
+                            </animateMotion>
+                        </circle>
+                        <circle r="5" class="data-packet">
+                             <animateMotion dur="3s" begin="2s" repeatCount="indefinite">
+                                <mpath href="#line3"/>
+                            </animateMotion>
+                        </circle>
+                        <circle r="5" class="data-packet">
+                             <animateMotion dur="3s" begin="0.5s" repeatCount="indefinite">
+                                <mpath href="#line4"/>
+                            </animateMotion>
+                        </circle>
+                        <circle r="5" class="data-packet">
+                             <animateMotion dur="2s" begin="1.5s" repeatCount="indefinite">
+                                <mpath href="#line5"/>
+                            </animateMotion>
+                        </circle>
+
+                        <!-- Nodes -->
+                        <circle cx="150" cy="150" r="8" class="network-node"/>
+                        <circle cx="400" cy="75" r="8" class="network-node"/>
+                        <circle cx="400" cy="225" r="8" class="network-node"/>
+                        <circle cx="650" cy="150" r="8" class="network-node"/>
+                        
+                        <text x="150" y="180" fill="#e0e0e0" text-anchor="middle" font-size="14">Client 1</text>
+                        <text x="400" y="60" fill="#e0e0e0" text-anchor="middle" font-size="14">Switch</text>
+                        <text x="400" y="250" fill="#e0e0e0" text-anchor="middle" font-size="14">Router</text>
+                        <text x="650" y="180" fill="#e0e0e0" text-anchor="middle" font-size="14">Server</text>
+                    </svg>
+                </div>
+
+                <div class="topics-grid">
+                    <div class="topic-card" onclick="showContent('sisop-jaringan')">
+                        <h3>1. Sistem Operasi Jaringan</h3>
+                        <p>Pengertian, karakteristik, jenis, dan fungsi utama.</p>
+                    </div>
+                    <div class="topic-card" onclick="showContent('remote-server')">
+                        <h3>2. Remote Server</h3>
+                        <p>Mengakses dan mengelola server dari jarak jauh.</p>
+                    </div>
+                    <div class="topic-card" onclick="showContent('dhcp-server')">
+                        <h3>3. DHCP Server</h3>
+                        <p>Pemberian alamat IP secara otomatis.</p>
+                    </div>
+                    <div class="topic-card" onclick="showContent('ftp-server')">
+                        <h3>4. FTP Server</h3>
+                        <p>Protokol transfer file antar komputer.</p>
+                    </div>
+                    <div class="topic-card" onclick="showContent('file-server')">
+                        <h3>5. File Server</h3>
+                        <p>Pusat penyimpanan dan berbagi file dalam jaringan.</p>
+                    </div>
+                    <div class="topic-card" onclick="showContent('web-server')">
+                        <h3>6. Web Server</h3>
+                        <p>Menyajikan halaman web melalui protokol HTTP.</p>
+                    </div>
+                    <div class="topic-card" onclick="showContent('dns-server')">
+                        <h3>7. DNS Server</h3>
+                        <p>Menerjemahkan nama domain menjadi alamat IP.</p>
+                    </div>
+                    <div class="topic-card" onclick="showContent('database-server')">
+                        <h3>8. Database Server</h3>
+                        <p>Pengelolaan dan penyimpanan data terstruktur.</p>
+                    </div>
+                    <div class="topic-card" onclick="showContent('mail-server')">
+                        <h3>9. Mail Server</h3>
+                        <p>Sistem pengiriman dan penerimaan email.</p>
+                    </div>
+                    <div class="topic-card" onclick="showContent('pengalamatan-ip')">
+                        <h3>10. Pengalamatan IP</h3>
+                        <p>Konsep IPv4, IPv6, subnetting, dan routing.</p>
+                    </div>
+                    <div class="topic-card" onclick="showContent('keamanan-jaringan')">
+                        <h3>11. Keamanan Jaringan</h3>
+                        <p>Firewall, enkripsi, dan proteksi dari ancaman.</p>
+                    </div>
+                    <div class="topic-card" onclick="showContent('teknologi-layanan')">
+                        <h3>12. Teknologi Layanan Jaringan</h3>
+                        <p>Cloud Computing, VoIP, dan teknologi terkini.</p>
+                    </div>
+                    <div class="topic-card" onclick="showContent('desain-grafis')">
+                        <h3>13. Desain Grafis</h3>
+                        <p>Pengenalan software dan prinsip desain untuk TKJ.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wadah untuk konten materi yang dimuat secara dinamis -->
+        <div id="content-container" class="content-page"></div>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Pusat Edukasi TKJ. Dibuat dengan ❤️ untuk pembelajaran.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

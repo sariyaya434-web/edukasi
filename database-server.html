@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="content-header">
+        <h1>Database Server</h1>
+    </div>
+    <div class="content-body">
+        <h2>Pengertian Database Server</h2>
+        <p><strong>Database Server</strong> adalah sistem komputer (baik perangkat keras maupun perangkat lunak) yang menyediakan layanan akses dan manajemen basis data (database) kepada klien atau aplikasi lain dalam sebuah jaringan. Server ini bertanggung jawab untuk menerima permintaan dari klien, memproses permintaan tersebut (seperti query untuk mengambil, menambah, mengubah, atau menghapus data), dan mengembalikan hasilnya. Database Server adalah jantung dari hampir semua aplikasi modern, mulai dari website e-commerce dan media sosial hingga sistem perbankan dan aplikasi enterprise. Ia menyediakan lingkungan yang terstruktur, aman, andal, dan efisien untuk menyimpan dan mengelola volume data yang sangat besar. Tanpa Database Server, aplikasi akan kesulitan untuk mengelola data secara konsisten, aman, dan skalabel.</p>
+
+        <h2>Fungsi Utama dan Komponen</h2>
+        <p>Fungsi utama dari Database Server adalah <strong>manajemen data persisten</strong>. Ini mencakup beberapa tugas krusial:
+        <ul>
+            <li><strong>Penyimpanan Data:</strong> Menyimpan data dalam format yang terstruktur dan terorganisir, biasanya dalam tabel yang terdiri dari baris dan kolom (pada database relasional).</li>
+            <li><strong>Pemrosesan Query:</strong> Menerima perintah dalam bahasa query (seperti SQL - Structured Query Language) dari aplikasi klien dan mengeksekusinya untuk memanipulasi data.</li>
+            <li><strong>Manajemen Transaksi:</strong> Memastikan bahwa serangkaian operasi database (transaksi) dieksekusi sebagai satu unit atomik. Artinya, semua operasi dalam transaksi berhasil, atau tidak ada yang sama sekali (prinsip ACID: Atomicity, Consistency, Isolation, Durability). Ini mencegah data menjadi tidak konsisten, misalnya saat transfer bank.</li>
+            <li><strong>Keamanan Data:</strong> Mengelola autentikasi (siapa yang boleh terhubung) dan otorisasi (apa yang boleh dilakukan oleh pengguna yang terhubung) untuk melindungi data dari akses yang tidak sah.</li>
+            <li><strong>Konkurensi:</strong> Mengelola akses simultan dari banyak pengguna atau aplikasi, memastikan bahwa mereka tidak saling menimpa atau mengunci data secara berbahaya.</li>
+            <li><strong>Backup dan Recovery:</strong> Menyediakan mekanisme untuk membuat cadangan data dan memulihkannya jika terjadi bencana atau kegagalan sistem.</li>
+        </ul>
+        </p>
+        <p>Sebuah Database Server terdiri dari tiga komponen utama: <strong>Database Engine</strong> (inti perangkat lunak yang melakukan semua logika pemrosesan data), <strong>Database Itself</strong> (koleksi data yang sebenarnya), dan <strong>Database API</strong> (antarmuka yang memungkinkan aplikasi klien berkomunikasi dengan engine).</p>
+
+        <h2>Jenis-Jenis Database Server</h2>
+        <p>Database Server dapat diklasifikasikan berdasarkan model data yang mereka gunakan. Dua kategori utama adalah:
+        <ol>
+            <li><strong>Database Relasional (SQL):</strong> Ini adalah jenis database yang paling tradisional dan paling banyak digunakan. Data disimpan dalam tabel yang saling berhubungan melalui kunci (primary key dan foreign key). Mereka menggunakan SQL sebagai bahasa query standar. Database Server relasional sangat baik untuk menjaga integritas data dan cocok untuk aplikasi dengan struktur data yang terdefinisi dengan baik. Contoh populer termasuk <strong>MySQL</strong> (sangat populer untuk web, open source), <strong>PostgreSQL</strong> (open source, sangat kaya fitur dan mendukung standar SQL secara ketat), <strong>Microsoft SQL Server</strong> (solusi enterprise dari Microsoft), <strong>Oracle Database</strong> (pemimpin pasar untuk aplikasi enterprise kelas atas), dan <strong>SQLite</strong> (database berbasis file yang ringan, sering digunakan untuk aplikasi mobile atau desktop).</li>
+            <li><strong>Database Non-Relasional (NoSQL):</strong> Muncul sebagai respons terhadap kebutuhan akan skalabilitas dan fleksibilitas yang lebih tinggi di era big data. Database NoSQL tidak selalu menggunakan model tabel relasional. Mereka cocok untuk data tidak terstruktur atau semi-terstruktur dan dapat menskalakan secara horizontal (menambahkan lebih banyak server) dengan lebih mudah. Jenis-jenis NoSQL meliputi:
+                <ul>
+                    <li><strong>Document Databases:</strong> Menyimpan data dalam dokumen mirip JSON (seperti MongoDB).</li>
+                    <li><strong>Key-Value Stores:</strong> Model penyimpanan paling sederhana, menggunakan kunci unik untuk mengaitkan dengan nilai (seperti Redis atau Amazon DynamoDB).</li>
+                    <li><strong>Column-Family Stores:</strong> Menyimpan data dalam kolom而不是行, cocok untuk analitik data besar (seperti Apache Cassandra).</li>
+                    <li><strong>Graph Databases:</strong> Dirancang untuk data yang memiliki hubungan kompleks, menggunakan node dan tepi (seperti Neo4j).</li>
+                </ul>
+            </li>
+        </ol>
+        </p>
+
+        <h2>Implementasi dan Arsitektur</h2>
+        <p>Database Server dapat di-deploy dengan berbagai cara. Model tradisional adalah <strong>on-premise</strong>, di mana server fisik atau virtual berada di data center milik perusahaan. Namun, saat ini semakin populer menggunakan <strong>Database as a Service (DBaaS)</strong> dari penyedia cloud seperti Amazon Web Services (AWS RDS, Aurora), Google Cloud (Cloud SQL), atau Microsoft Azure (Azure SQL Database). Dengan DBaaS, penyedia cloud mengelola infrastruktur, pemeliharaan, backup, dan penskalaan, memungkinkan pengembang untuk fokus pada aplikasi mereka.</p>
+        <p>Dalam arsitektur aplikasi, Database Server sering kali menjadi bagian dari <strong>stack tiga tingkat (three-tier architecture)</strong>: <strong>Presentation Tier</strong> (browser atau aplikasi desktop), <strong>Logic Tier</strong> (aplikasi server yang berisi logika bisnis), dan <strong>Data Tier</strong> (Database Server). Aplikasi server berkomunikasi dengan Database Server untuk mengambil atau menyimpan data atas nama pengguna. Untuk performa dan ketersediaan tinggi, Database Server sering dikonfigurasi dalam <strong>kluster</strong> atau <strong>replikasi</strong>. Dalam setup <strong>master-slave</strong>, satu server master menangani semua operasi tulis, sementara beberapa server slave menangani operasi baca, meningkatkan performa secara signifikan. Jika server master gagal, salah satu slave dapat dipromosikan menjadi master baru, memastikan ketersediaan layanan. Pemilihan Database Server yang tepat sangat tergantung pada kebutuhan aplikasi, termasuk volume data, kompleksitas query, kebutuhan skalabilitas, dan pertimbangan biaya.</p>
+        
+        <button class="back-btn" onclick="showLanding()">← Kembali ke Beranda</button>
+    </div>
+</div>

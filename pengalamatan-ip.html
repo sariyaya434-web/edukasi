@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="content-header">
+        <h1>Pengalamatan IP</h1>
+    </div>
+    <div class="content-body">
+        <h2>Pengertian Pengalamatan IP</h2>
+        <p><strong>Pengalamatan IP (IP Addressing)</strong> adalah sistem penamaan numerik yang diberikan kepada setiap perangkat yang terhubung ke sebuah jaringan komputer yang menggunakan protokol Internet Protocol (IP) untuk komunikasi. Alamat IP berfungsi seperti alamat rumah untuk perangkat di dunia digital; ia mengidentifikasi secara unik lokasi perangkat tersebut, memungkinkan data untuk diarahkan dan dikirimkan ke tempat yang tepat. Tanpa alamat IP, router dan perangkat jaringan lainnya tidak akan tahu ke mana harus mengirim paket data, dan komunikasi di internet atau jaringan lokal akan menjadi tidak mungkin. Alamat IP terdiri dari dua bagian utama: bagian <strong>network</strong> (jaringan) yang mengidentifikasi jaringan tempat perangkat berada, dan bagian <strong>host</strong> (tuan rumah) yang mengidentifikasi perangkat itu sendiri di dalam jaringan tersebut.</p>
+
+        <h2>Versi IP: IPv4 vs. IPv6</h2>
+        <p>Ada dua versi utama dari protokol IP yang digunakan saat ini:
+        <ol>
+            <li><strong>IPv4 (Internet Protocol version 4):</strong> Ini adalah versi yang paling lama dan paling banyak digunakan. Alamat IPv4 adalah bilangan biner 32-bit, yang biasanya ditulis dalam format desimal bertitik (dotted-decimal notation), seperti `192.168.1.10`. Setiap oktet (angka antara titik) dapat bernilai dari 0 hingga 255. Dengan 32 bit, IPv4 secara teoritis dapat menghasilkan sekitar 4,3 miliar alamat unik. Pada awalnya, jumlah ini terlihat sangat besar, namun dengan ledakan perangkat yang terhubung ke internet (komputer, ponsel, IoT), ketersediaan alamat IPv4 publik telah menipis drastis. Untuk mengatasi ini, dikembangkanlah teknik seperti <strong>NAT (Network Address Translation)</strong> yang memungkinkan banyak perangkat di jaringan lokal berbagi satu alamat IP publik.</li>
+            <li><strong>IPv6 (Internet Protocol version 6):</strong> Ini adalah versi penerus yang dirancang untuk mengatasi keterbatasan alamat IPv4. Alamat IPv6 adalah bilangan 128-bit, yang memungkinkan jumlah alamat yang hampir tidak terbatas (sekitar 340 undecillion atau 3.4 x 10^38). Alamat IPv6 ditulis dalam format heksadesimal dan dipisahkan oleh titik dua, seperti `2001:0db8:85a3:0000:0000:8a2e:0370:7334`. Selain jumlah alamat yang jauh lebih besar, IPv6 juga membawa peningkatan lain seperti struktur header yang lebih sederhana (yang meningkatkan performa routing), dukungan built-in untuk keamanan (IPsec), dan konfigurasi otomatis yang lebih baik (Stateless Address Autoconfiguration - SLAAC). Meskipun telah ada sejak lama, adopsi IPv6 masih berjalan perlahan karena memerlukan perubahan infrastruktur yang signifikan.</li>
+        </ol>
+        </p>
+
+        <h2>Kelas Alamat IPv4 dan Subnetting</h2>
+        <p>Secara historis, alamat IPv4 dibagi menjadi lima kelas (A, B, C, D, E) untuk memfasilitasi alokasi alamat berdasarkan ukuran jaringan.
+        <ul>
+            <li><strong>Kelas A:</strong> Dimulai dengan oktet pertama 1-126. Dirancang untuk jaringan sangat besar dengan jutaan host. Bagian network adalah oktet pertama, dan tiga oktet sisanya adalah host.</li>
+            <li><strong>Kelas B:</strong> Dimulai dengan oktet pertama 128-191. Untuk jaringan menengah hingga besar. Dua oktet pertama adalah network, dua sisanya adalah host.</li>
+            <li><strong>Kelas C:</strong> Dimulai dengan oktet pertama 192-223. Untuk jaringan kecil. Tiga oktet pertama adalah network, dan oktet terakhir adalah host (hingga 254 host).</li>
+            <li><strong>Kelas D:</strong> Dicadangkan untuk multicast.</li>
+            <li><strong>Kelas E:</strong> Dicadangkan untuk penggunaan eksperimental.</li>
+        </ul>
+        Sistem kelas ini tidak efisien dan menyebabkan banyak pemborosan alamat. Oleh karena itu, dikembangkanlah <strong>Subnetting</strong> dan <strong>VLSM (Variable Length Subnet Masking)</strong>. <strong>Subnetting</strong> adalah proses memecah sebuah jaringan IP yang lebih besar menjadi beberapa jaringan yang lebih kecil (subnetworks atau subnet). Ini dilakukan dengan "meminjam" bit dari bagian host dan menggunakannya sebagai bagian subnet. <strong>Subnet Mask</strong> (misalnya, `255.255.255.0`) digunakan untuk menentukan bagian mana dari alamat IP yang merupakan network dan mana yang merupakan host. Dengan subnetting, administrator dapat membuat jaringan yang ukurannya sesuai dengan kebutuhan, menghemat penggunaan alamat IP secara signifikan dan meningkatkan keamanan dengan memisahkan lalu lintas antar departemen atau fungsi.</p>
+
+        <h2>Alamat IP Publik vs. Privat</h2>
+        <p>Alamat IP juga dikategorikan sebagai <strong>publik</strong> dan <strong>privat</strong>.
+        <ul>
+            <li><strong>Alamat IP Publik:</strong> Ini adalah alamat IP yang unik secara global dan dapat diakses langsung dari internet. Alamat ini ditetapkan oleh ISP (Internet Service Provider) dan diperlukan untuk perangkat seperti server web atau router yang terhubung langsung ke internet.</li>
+            <li><strong>Alamat IP Privat:</strong> Ini adalah alamat IP yang dicadangkan untuk digunakan dalam jaringan pribadi (seperti jaringan rumah atau kantor). Alamat-alamat ini tidak dapat diarahkan di internet global. RFC 1918 mendefinisikan tiga rentang alamat privat:
+                <ul>
+                    <li>`10.0.0.0` hingga `10.255.255.255` (Kelas A)</li>
+                    <li>`172.16.0.0` hingga `172.31.255.255` (Kelas B)</li>
+                    <li>`192.168.0.0` hingga `192.168.255.255` (Kelas C)</li>
+                </ul>
+            </li>
+        </ul>
+        Perangkat di dalam jaringan privat menggunakan alamat ini untuk berkomunikasi satu sama lain. Untuk terhubung ke internet, mereka menggunakan <strong>NAT (Network Address Translation)</strong> pada router. Router akan memiliki satu alamat IP publik dan akan menerjemahkan alamat IP privat dari perangkat internal ke alamat IP publiknya saat mengirim paket ke internet, dan sebaliknya saat menerima respons. Ini memungkinkan jutaan perangkat di seluruh dunia berbagi jumlah alamat IP publik yang terbatas.</p>
+
+        <h2>Routing dan Gateway</h2>
+        <p><strong>Routing</strong> adalah proses memilih jalur untuk lalu lintas jaringan antara atau di antara beberapa jaringan. Keputusan routing dibuat oleh perangkat yang disebut <strong>router</strong>. Router bekerja dengan memeriksa alamat IP tujuan pada setiap paket data dan membandingkannya dengan tabel routing-nya. Tabel routing berisi informasi tentang berbagai jaringan yang dapat dijangkau router dan antarmuka mana yang harus digunakan untuk mengirim paket ke jaringan tersebut.</p>
+        <p><strong>Gateway</strong> (atau lebih spesifiknya, <strong>default gateway</strong>) adalah router pada sebuah jaringan yang berfungsi sebagai titik akses ke jaringan lain. Ketika sebuah perangkat ingin mengirim data ke alamat IP yang tidak berada di jaringan lokalnya (subnet yang sama), perangkat tersebut akan mengirimkan paket tersebut ke default gateway-nya. Default gateway kemudian akan bertanggung jawab untuk meneruskan paket tersebut ke tujuannya, mungkin melalui beberapa router lain di internet. Tanpa gateway yang dikonfigurasi dengan benar, perangkat hanya akan dapat berkomunikasi dengan perangkat lain di jaringan lokalnya sendiri. Pengalamatan IP, subnetting, dan routing adalah konsep fundamental yang bekerja bersama untuk memungkinkan konektivitas end-to-end di internet global.</p>
+        
+        <button class="back-btn" onclick="showLanding()">← Kembali ke Beranda</button>
+    </div>
+</div>

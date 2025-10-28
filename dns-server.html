@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="content-header">
+        <h1>DNS Server</h1>
+    </div>
+    <div class="content-body">
+        <h2>Pengertian DNS Server</h2>
+        <p><strong>DNS (Domain Name System) Server</strong> adalah server yang menjalankan layanan DNS, yang sering dijuluki sebagai "buku telepon" internet. Tugas utamanya adalah menerjemahkan nama domain yang mudah diingat oleh manusia (seperti `www.google.com` atau `edutkj.com`) menjadi alamat IP numerik (seperti `172.217.16.196`) yang dipahami oleh komputer dan router untuk menemukan lokasi server di internet. Tanpa DNS, kita harus menghafal rangkaian angka yang panjang untuk mengakses setiap website, yang jelas tidak praktis. DNS Server bekerja di balik layar setiap kali kita mengetikkan URL di browser, mengirim email, atau melakukan aktivitas internet lainnya yang menggunakan nama domain. Sistem ini bersifat hierarkis dan terdistribusi, yang memungkinkannya menjadi sangat andal dan skalabel, menangani miliaran permintaan terjemahan nama setiap hari di seluruh dunia.</p>
+
+        <h2>Fungsi dan Cara Kerja DNS</h2>
+        <p>Fungsi utama DNS adalah <strong>resolusi nama</strong>. Proses ini bekerja melalui serangkaian pertanyaan yang terstruktur secara hierarkis. Ketika Anda mencoba mengakses `www.example.com`, komputer Anda tidak langsung tahu alamat IP-nya. Prosesnya kira-kira sebagai berikut:
+        <ol>
+            <li><strong>Query ke Local DNS Resolver:</strong> Komputer Anda mengirimkan query ke DNS Server yang dikonfigurasi di jaringannya (biasanya disediakan oleh ISP atau diatur secara manual, seperti Google DNS `8.8.8.8`). Server ini disebut <strong>recursive resolver</strong> karena ia akan melakukan semua pekerjaan "mencari" atas nama Anda.</li>
+            <li><strong>Memeriksa Cache:</strong> Recursive resolver pertama-tama akan memeriksa cache-nya. Jika ia baru-baru ini melayani permintaan untuk domain yang sama dan informasinya masih belum kedaluwarsa, ia akan langsung mengembalikan alamat IP dari cache. Ini membuat proses sangat cepat untuk domain-domain yang populer.</li>
+            <li><strong>Query ke Root Server:</strong> Jika tidak ada di cache, resolver akan mengirimkan query ke salah satu dari 13 <strong>root server</strong> di dunia. Root server tidak mengetahui alamat IP lengkap dari `www.example.com`, tetapi ia tahu siapa yang mengelola domain tingkat atas (Top-Level Domain - TLD) `.com`. Root server akan merespons dengan alamat IP dari <strong>TLD server</strong> untuk `.com`.</li>
+            <li><strong>Query ke TLD Server:</strong> Resolver kemudian menghubungi TLD server `.com`. TLD server juga tidak mengetahui alamat IP `www.example.com`, tetapi ia tahu server mana yang berwenang (authoritative) untuk domain `example.com`. Ia akan merespons dengan alamat IP dari <strong>authoritative nameserver</strong> untuk `example.com`.</li>
+            <li><strong>Query ke Authoritative Nameserver:</strong> Akhirnya, resolver menghubungi authoritative nameserver. Server ini adalah sumber kebenaran untuk domain `example.com`. Ia menyimpan catatan DNS (DNS records) untuk domain tersebut, termasuk catatan `A` (Address) yang memetakan `www.example.com` ke alamat IP spesifik. Server ini akan merespons dengan alamat IP yang diminta.</li>
+            <li><strong>Mengembalikan Jawaban:</strong> Recursive resolver menerima alamat IP, menyimpannya di cache-nya untuk permintaan di masa mendatang, dan mengembalikannya ke komputer Anda. Browser Anda sekarang dapat membuat koneksi HTTP ke alamat IP tersebut untuk mengunduh halaman web.</li>
+        </ol>
+        </p>
+        <p>Semua proses ini terjadi dalam hitungan milidetik, sehingga pengguna hampir tidak menyadarinya.</p>
+
+        <h2>Jenis-Jenis Catatan DNS (DNS Records)</h2>
+        <p>DNS Server menyimpan informasi dalam berbagai jenis catatan (records). Beberapa yang paling umum adalah:
+        <ul>
+            <li><strong>A (Address) Record:</strong> Catatan paling dasar yang memetakan nama domain ke alamat IPv4.</li>
+            <li><strong>AAAA (Quad-A) Record:</strong> Mirip dengan A Record, tetapi memetakan nama domain ke alamat IPv6.</li>
+            <li><strong>CNAME (Canonical Name) Record:</strong> Digunakan untuk membuat alias dari satu nama domain ke nama domain lain. Misalnya, `mail.example.com` bisa menjadi CNAME untuk `example.com`.</li>
+            <li><strong>MX (Mail Exchange) Record:</strong> Menentukan server email mana yang bertanggung jawab untuk menerima email atas nama domain. Ketika Anda mengirim email ke `user@example.com`, server email Anda akan mencari record MX untuk `example.com`.</li>
+            <li><strong>NS (Nameserver) Record:</strong> Menentukan server DNS mana yang bersifat otoritatif untuk sebuah domain. Ini adalah cara TLD server tahu ke mana harus mengarahkan query.</li>
+            <li><strong>TXT (Text) Record:</strong> Catatan fleksibel yang dapat menyimpan teks arbitrer. Sering digunakan untuk tujuan verifikasi, seperti membuktikan kepemilikan domain kepada layanan pihak ketiga (misalnya, Google Workspace atau Cloudflare).</li>
+            <li><strong>SOA (Start of Authority) Record:</strong> Catatan administratif yang menyimpan informasi tentang zona DNS, seperti email administrator dan nomor seri untuk sinkronisasi.</li>
+        </ul>
+        </p>
+
+        <h2>Implementasi dan Pentingnya Keamanan (DNSSEC)</h2>
+        <p>Perangkat lunak populer untuk menjalankan DNS Server antara lain <strong>BIND</strong> (Berkeley Internet Name Domain), yang merupakan standar de facto di dunia Unix/Linux, serta <strong>Unbound</strong> dan <strong>PowerDNS</strong>. Administrator jaringan sering kali menyiapkan DNS Server lokal mereka sendiri untuk keperluan internal (misalnya, untuk menyelesaikan nama server internal seperti `fileserver.corp.local`). Di internet, perusahaan domain registrar atau penyedia hosting biasanya menyediakan layanan DNS untuk domain pelanggan mereka melalui antarmuka yang mudah digunakan.</p>
+        <p>Karena DNS adalah komponen kritis infrastruktur internet, ia menjadi target serangan. Salah satu ancamannya adalah <strong>DNS Spoofing</strong> atau <strong>Cache Poisoning</strong>, di mana penyerang mencoba menipu DNS Server agar menyimpan entri palsu, mengarahkan pengguna ke situs web berbahaya. Untuk mengatasi ini, dikembangkanlah <strong>DNSSEC (Domain Name System Security Extensions)</strong>. DNSSEC menambahkan lapisan keamanan kriptografis ke DNS. Dengan DNSSEC, setiap respons dari server DNS ditandatangani secara digital. Resolver dapat memverifikasi tanda tangan ini untuk memastikan bahwa respons yang diterima asli dan tidak telah diubah di tengah jalan. Meskipun implementasinya kompleks, DNSSEC sangat penting untuk menjaga integritas dan kepercayaan pada sistem penamaan internet.</p>
+        
+        <button class="back-btn" onclick="showLanding()">← Kembali ke Beranda</button>
+    </div>
+</div>

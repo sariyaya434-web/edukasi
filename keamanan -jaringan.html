@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="content-header">
+        <h1>Keamanan Jaringan</h1>
+    </div>
+    <div class="content-body">
+        <h2>Pengertian Keamanan Jaringan</h2>
+        <p><strong>Keamanan Jaringan (Network Security)</strong> adalah sebuah bidang yang luas dalam ilmu komputer yang mencakup semua kebijakan, praktik, dan teknologi yang dirancang untuk melindungi integritas, kerahasiaan, dan ketersediaan jaringan komputer serta data yang melaluinya. Tujuan utama dari keamanan jaringan adalah untuk mencegah akses yang tidak sah, penyalahgunaan, modifikasi, atau gangguan terhadap jaringan dan sumber dayanya. Dalam dunia yang semakin terhubung ini, di mana data adalah aset yang sangat berharga, keamanan jaringan bukan lagi menjadi pilihan, melainkan sebuah keharusan. Ancaman terhadap keamanan jaringan sangat beragam, mulai dari peretas (hacker) yang mencoba mencuri data, malware yang menginfeksi sistem, hingga serangan Denial of Service (DoS) yang bertujuan untuk membuat layanan tidak tersedia. Oleh karena itu, pendekatan keamanan yang komprehensif dan berlapis (defense-in-depth) sangatlah penting.</p>
+
+        <h2>Pilar Utama Keamanan Informasi (CIA Triad)</h2>
+        <p>Sebagian besar praktik keamanan jaringan didasarkan pada tiga pilar fundamental yang dikenal sebagai <strong>CIA Triad</strong>:
+        <ol>
+            <li><strong>Confidentiality (Kerahasiaan):</strong> Prinsip ini memastikan bahwa informasi hanya dapat diakses oleh pihak-pihak yang berwenang. Kerahasiaan dilindungi melalui metode seperti enkripsi, yang mengacak data sehingga tidak dapat dibaca tanpa kunci dekripsi, dan kontrol akses, yang membatasi siapa yang bisa melihat atau mengubah data.</li>
+            <li><strong>Integrity (Integritas):</strong> Integritas menjamin bahwa informasi tetap akurat dan tidak diubah dengan cara yang tidak sah selama penyimpanan atau transmisi. Untuk menjaga integritas, digunakan teknik seperti <strong>hashing</strong> (menghasilkan "sidik jari" digital dari data untuk memverifikasi bahwa data tidak berubah) dan <strong>digital signatures</strong> (yang tidak hanya memverifikasi integritas tetapi juga identitas pengirim).</li>
+            <li><strong>Availability (Ketersediaan):</strong> Prinsip ini memastikan bahwa sistem, aplikasi, dan data dapat diakses oleh pengguna yang berwenang ketika dibutuhkan. Ancaman terhadap ketersediaan termasuk serangan DoS, kegagalan perangkat keras, atau bencana alam. Untuk menjaga ketersediaan, organisasi menerapkan solusi seperti redundansi (misalnya, server atau koneksi jaringan ganda), <strong>load balancing</strong>, dan rencana pemulihan bencana (disaster recovery plan).</li>
+        </ol>
+        </p>
+
+        <h2>Komponen dan Teknologi Keamanan Jaringan</h2>
+        <p>Untuk mencapai tujuan keamanan, ada banyak teknologi dan komponen yang diterapkan dalam sebuah jaringan:
+        <ul>
+            <li><strong>Firewall:</strong> Ini adalah baris pertama pertahanan jaringan. Firewall adalah perangkat keras atau perangkat lunak yang memantau lalu lintas jaringan masuk dan keluar dan memutuskan apakah akan mengizinkan atau memblokirnya berdasarkan aturan keamanan yang telah ditetapkan. Firewall dapat berupa <strong>packet-filtering</strong> (sederhana, memeriksa header paket), <strong>stateful inspection</strong> (melacak status koneksi), atau <strong>next-generation firewall (NGFW)</strong> yang mencakup fitur-fitur canggih seperti inspeksi paket mendalam (DPI) dan pencegahan intrusi.</li>
+            <li><strong>IDS dan IPS (Intrusion Detection and Prevention Systems):</strong> <strong>IDS</strong> memantau jaringan untuk aktivitas yang mencurigakan atau melanggar kebijakan dan memberi peringatan kepada administrator. <strong>IPS</strong> melangkah lebih jauh dengan tidak hanya mendeteksi, tetapi juga secara aktif memblokir atau mencegah serangan yang terdeteksi secara real-time.</li>
+            <li><strong>VPN (Virtual Private Network):</strong> VPN menciptakan terowongan terenkripsi melalui jaringan publik (seperti internet), memungkinkan pengguna untuk mengakses jaringan pribadi secara aman dari jarak jauh. Ini sangat penting untuk <strong>remote work</strong>, karena melindungi data yang dikirimkan dari klien ke server dari penyadapan.</li>
+            <li><strong>Enkripsi:</strong> Enkripsi adalah proses mengubah data (plaintext) menjadi format yang tidak dapat dibaca (ciphertext). Ini digunakan untuk melindungi kerahasiaan data baik saat <strong>dalam transit</strong> (misalnya, menggunakan TLS/SSL untuk HTTPS, SSH, atau VPN) maupun saat <strong>diam</strong> (data yang disimpan di disk atau database, menggunakan enkripsi full-disk atau enkripsi kolom).</li>
+            <li><strong>Authentication dan Authorization:</strong> <strong>Authentication</strong> adalah proses memverifikasi identitas pengguna (misalnya, dengan kata sandi, token, atau biometrik). <strong>Authorization</strong> adalah proses menentukan apa yang boleh dilakukan oleh pengguna yang telah terautentikasi (misalnya, file mana yang bisa diakses). <strong>Multi-Factor Authentication (MFA)</strong> adalah praktik terbaik saat ini, yang mengharuskan pengguna untuk memberikan dua atau lebih bukti identitas.</li>
+            <li><strong>Access Control Lists (ACLs):</strong> Ini adalah daftar aturan pada router atau switch yang memfilter lalu lintas jaringan berdasarkan alamat IP, protokol, atau port. ACLs memberikan kontrol yang lebih granular daripada firewall dasar.</li>
+        </ul>
+        </p>
+
+        <h2>Jenis Ancaman dan Strategi Pertahanan</h2>
+        <p>Ancaman keamanan jaringan terus berkembang. Beberapa jenis umum meliputi:
+        <ul>
+            <li><strong>Malware:</strong> Perangkat lunak berbahaya seperti virus, worm, trojan, ransomware, dan spyware.</li>
+            <li><strong>Phishing:</strong> Serangan sosial teknik untuk menipu pengguna agar memberikan informasi sensitif seperti kata sandi atau detail kartu kredit.</li>
+            <li><strong>Denial of Service (DoS/DDoS):</strong> Serangan yang membanjiri server atau jaringan dengan lalu lintas palsu untuk membuatnya tidak dapat diakses oleh pengguna legit.</li>
+            <li><strong>Man-in-the-Middle (MitM):</strong> Serangan di mana penyerang secara diam-diam mencegat dan mungkin mengubah komunikasi antara dua pihak yang percaya.</li>
+            <li><strong>SQL Injection:</strong> Serangan yang menyisipkan kode SQL berbahaya ke dalam query dari aplikasi web untuk memanipulasi database.</li>
+        </ul>
+        </p>
+        <p>Strategi pertahanan yang efektif adalah pendekatan berlapis (<strong>defense-in-depth</strong>). Ini berarti tidak mengandalkan satu metode keamanan tunggal, melainkan menerapkan beberapa lapisan pertahanan. Misalnya, sebuah jaringan mungkin memiliki firewall di perimeter, IDS/IPS di dalam jaringan, enkripsi untuk data sensitif, kebijakan kata sandi yang kuat dengan MFA untuk pengguna, dan pelatihan rutin bagi karyawan untuk mengenali phishing. Keamanan jaringan adalah proses yang berkelanjutan, bukan proyek sekali waktu. Ini memerlukan pemantauan konstan, pembaruan perangkat lunak untuk menambal kerentanan, dan evaluasi rutin terhadap kebijakan dan ancaman yang berkembang.</p>
+        
+        <button class="back-btn" onclick="showLanding()">← Kembali ke Beranda</button>
+    </div>
+</div>
